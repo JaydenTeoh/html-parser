@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	parser "parse_html/pkg/parse"
-	utils "parse_html/pkg/utils"
 	"strings"
+
+	parser "github.com/JaydenTeoh/html-parser/pkg/parse"
+	utils "github.com/JaydenTeoh/html-parser/pkg/utils"
 )
 
 var exampleHtml = `
