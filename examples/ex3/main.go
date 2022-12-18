@@ -1,3 +1,13 @@
+package main
+
+import (
+	"fmt"
+	parser "parse_html/pkg/parse"
+	utils "parse_html/pkg/utils"
+	"strings"
+)
+
+var exampleHtml = `
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="ie ie6 lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="ie ie7 lt-ie9 lt-ie8"        lang="en"> <![endif]-->
@@ -52,7 +62,7 @@
       <div class="col-md-10 col-md-offset-1">
         <center>
           <p class="disclaimer">
-            Artwork created by Marcus Olsson (<a href="https://twitter.com/marcusolsson">@marcusolsson <b>OMG</b></a>), animated by Jon Calhoun (that's me!), and inspired by the original Go Gopher created by Renee French.
+            Artwork created by Marcus Olsson (<a href="https://twitter.com/marcusolsson">@marcusolsson</a>), animated by Jon Calhoun (that's me!), and inspired by the original Go Gopher created by Renee French.
           </p>
         </center>
       </div>
@@ -60,3 +70,12 @@
   </section>
 </body>
 </html>
+
+`
+
+func main() {
+	r := strings.NewReader(exampleHtml)
+	links, err := parser.Parse(r)
+	utils.CheckErrors(err)
+	fmt.Printf("%+v\n", links)
+}

@@ -1,3 +1,13 @@
+package main
+
+import (
+	"fmt"
+	parser "parse_html/pkg/parse"
+	utils "parse_html/pkg/utils"
+	"strings"
+)
+
+var exampleHtml = `
 <html>
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -15,3 +25,11 @@
   </div>
 </body>
 </html>
+`
+
+func main() {
+	r := strings.NewReader(exampleHtml)
+	links, err := parser.Parse(r)
+	utils.CheckErrors(err)
+	fmt.Printf("%+v\n", links)
+}
